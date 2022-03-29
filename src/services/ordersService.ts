@@ -10,9 +10,10 @@ class OrdersService {
       },
     });
 
-    // Função realizada com refeência e ajuda de Denis Johnatan e Amanda Fernandes
+    // Função realizada com refeência de Amanda Fernandes
     const validatedOrders = allOrders.map((order) => ({
-      ...order, // Para não sobrescrever as orders
+      id: order.id,
+      userId: order.userId,
       products: order.Products.map((product) => product.id), // adiciona a propriedade products que contem apenas os ids dos produtos
     }));
 
