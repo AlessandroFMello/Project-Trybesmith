@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import ProductsController from '../controllers/productsController';
-import productsValidationMiddleware from '../middlewares/joiValidationMiddleware';
+import productsValidationMiddleware from '../middlewares/productsValidationMiddleware';
 
 const router = Router();
 
