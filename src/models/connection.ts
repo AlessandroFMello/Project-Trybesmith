@@ -10,4 +10,11 @@ const connection = mysql.createPool({
 
 export default connection;
 
-export const prisma = new PrismaClient();
+export const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: `mysql://${process.env.MYSQL_USER}:
+      ${process.env.MYSQL_PASSWORD}@${process.env.MYSQL_HOST}:3306/Trybesmith`,
+    },
+  },
+});
