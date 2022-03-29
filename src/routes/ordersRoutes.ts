@@ -1,9 +1,10 @@
 import { Router } from 'express';
+import OrdersController from '../controllers/ordersController';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+const ordersController = new OrdersController();
+
+router.get('/', ordersController.getAll);
 
 export default router;
