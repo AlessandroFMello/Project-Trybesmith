@@ -17,8 +17,6 @@ class OrdersService {
       products: order.Products.map((product) => product.id), // adiciona a propriedade products que contem apenas os ids dos produtos
     }));
 
-    console.log(validatedOrders);
-
     return { code: 200, validatedOrders };
   };
 }

@@ -7,30 +7,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Orders {
+model Order {
   id       Int        @id @default(autoincrement())
   userId   Int?
-  users    Users?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Orders_ibfk_1")
-  products Products[]
+  users    User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Orders_ibfk_1")
+  products Product[]
 
+  @@map("Orders")
   @@index([userId], map: "userId")
 }
 
-model Products {
+model Product {
   id      Int     @id @default(autoincrement())
   name    String  @db.Text
   amount  String  @db.Text
   orderId Int?
-  orders  Orders? @relation(fields: [orderId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Products_ibfk_1")
+  orders  Order? @relation(fields: [orderId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Products_ibfk_1")
 
+  @@map("Products")
   @@index([orderId], map: "orderId")
 }
 
-model Users {
+model User {
   id       Int      @id @default(autoincrement())
   username String   @db.Text
   classe   String   @db.Text
   level    Int
   password String   @db.Text
-  orders   Orders[]
+  orders   Order[]
+
+  @@map("Users")
 }
