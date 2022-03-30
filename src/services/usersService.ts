@@ -4,13 +4,13 @@ import tokenGenerator from '../tokenGenerator';
 
 class UsersService {
   public getAll = async () => {
-    const allUsers = await prisma.users.findMany();
+    const allUsers = await prisma.user.findMany();
 
     return { code: 200, allUsers };
   };
 
   public createUser = async (user: NewUserShape) => {
-    const newUser = await prisma.users.create({
+    const newUser = await prisma.user.create({
       data: user,
     });
 
